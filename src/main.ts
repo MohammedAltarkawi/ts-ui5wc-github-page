@@ -37,13 +37,17 @@ import Timeline from '@ui5/webcomponents-fiori/dist/Timeline.js';
 async function initializeApp() {
   const supportedLocales = ['en', 'fr', 'de', 'es'];
   supportedLocales.forEach(async (locale) => {
-    registerI18nLoader('github-page-ui5wc', locale, async (localeId) => {
-      const response = await fetch(
-        `./assets/messagebundle_${localeId}.properties`
-      );
-      const props = await response.text();
-      return parseProperties(props);
-    });
+    registerI18nLoader(
+      'github-page-ui5wc',
+      locale,
+      async (localeId: string) => {
+        const response = await fetch(
+          `./assets/messagebundle_${localeId}.properties`
+        );
+        const props = await response.text();
+        return parseProperties(props);
+      }
+    );
   });
 
   const ResourceBundlerAccessor = await getI18nBundle('github-page-ui5wc');

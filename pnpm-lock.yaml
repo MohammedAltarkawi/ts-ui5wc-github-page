@@ -11,7 +11,13 @@ dependencies:
   '@ui5/webcomponents-ai':
     specifier: ^2.0.1
     version: 2.0.1
+  '@ui5/webcomponents-base':
+    specifier: ^2.0.1
+    version: 2.0.1
   '@ui5/webcomponents-fiori':
+    specifier: ^2.0.1
+    version: 2.0.1
+  '@ui5/webcomponents-icons':
     specifier: ^2.0.1
     version: 2.0.1
 

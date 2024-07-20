@@ -8,7 +8,6 @@ import {
 import '@ui5/webcomponents/dist/Button.js';
 import '@ui5/webcomponents/dist/Avatar.js';
 import '@ui5/webcomponents/dist/Text.js';
-import '@ui5/webcomponents/dist/Title.js';
 
 import '@ui5/webcomponents/dist/Carousel.js';
 import '@ui5/webcomponents/dist/Card.js';
@@ -240,7 +239,7 @@ async function initializeApp() {
       role: ResourceBundlerAccessor.getText('msgGroupRole'),
       icon: 'building',
       link: 'https://www.msg.group/',
-      date: 'Online meeting',
+      date: 'Place Holder',
     },
 
     {
@@ -254,7 +253,7 @@ async function initializeApp() {
       role: ResourceBundlerAccessor.getText('implicoRole'),
       icon: 'education',
       link: 'https://www.implico.com/',
-      date: 'Online meeting',
+      date: 'Place Holder',
     },
 
     {
@@ -264,7 +263,7 @@ async function initializeApp() {
       role: ResourceBundlerAccessor.getText('hauniRole'),
       icon: 'education',
       link: 'https://www.koerber-technologies.com/',
-      date: 'Online meeting',
+      date: 'Place Holder',
     },
   ];
 

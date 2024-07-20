@@ -1,0 +1,38 @@
+name: Build & Deployment
+
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: true
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+      - name: build
+        run: |
+          pnpm install --frozen-lockfile
+        env:
+          CI: true
+
+      - name: build self
+        run: npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          external_repository: MohammedAltarkawi/mohammedaltarkawi.github.io
+          publish_branch: main # default: gh-pages
+          publish_dir: ./dist

@@ -46,8 +46,8 @@ jobs:
       # Step 5: Copy the specific file to the target repository (create or replace)
       - name: Copy specific file
         run: |
-          mkdir -p target-repo/path2/to/
-          cp ./dist/index.html target-repo/path2/to/index.html
+          mkdir -p target-repo/path/
+          cp ./dist/index.html target-repo/path/index.html
 
       # Step 6: Commit and push the changes
       - name: Commit and push changes

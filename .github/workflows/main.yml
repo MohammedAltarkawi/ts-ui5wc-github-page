@@ -47,13 +47,13 @@ jobs:
       - name: Copy specific file
         run: |
           mkdir -p target-repo/path/deeperFile
-          cp ./dist/index.html target-repo/path/deeperFile/index.html
+          cp ./dist target-repo/path/deeperFile
 
       # Step 6: Commit and push the changes
       - name: Commit and push changes
         run: |
           cd target-repo
-          git add path/deeperFile/index.html
+          git add path/deeperFile
           git commit -m "Update or add specific file"
           git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/MohammedAltarkawi/test-actions.git
         env:

@@ -46,7 +46,8 @@ jobs:
       # Step 5: Copy the specific file to the target repository (create or replace)
       - name: Copy specific file
         run: |
-          cp -r ./dist/index.html target-repo/path/deeperFile/index.html
+          mkdir -p target-repo/path/deeperFile
+          cp ./dist/index.html target-repo/path/deeperFile/index.html
 
       # Step 6: Commit and push the changes
       - name: Commit and push changes

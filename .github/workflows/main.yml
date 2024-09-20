@@ -53,7 +53,7 @@ jobs:
       - name: Commit and push changes
         run: |
           cd target-repo
-          git add path/to/specific-file.html
+          git add path/index.html
           git commit -m "Update or add specific file"
           git push
         env:

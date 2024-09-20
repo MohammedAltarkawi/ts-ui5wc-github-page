@@ -46,14 +46,13 @@ jobs:
       # Step 5: Copy the specific file to the target repository (create or replace)
       - name: Copy specific file
         run: |
-          mkdir -p target-repo/path/deeperFile
-          cp ./dist target-repo/path/deeperFile
+          cp -r ./dist/vite.svg target-repo/path/deeperFile/vite.svg
 
       # Step 6: Commit and push the changes
       - name: Commit and push changes
         run: |
           cd target-repo
-          git add path/deeperFile
+          git add path/deeperFile/vite.svg
           git commit -m "Update or add specific file"
           git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/MohammedAltarkawi/test-actions.git
         env:

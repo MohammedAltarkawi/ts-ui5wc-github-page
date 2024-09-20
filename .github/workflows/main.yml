@@ -55,6 +55,6 @@ jobs:
           cd target-repo
           git add path/index.html
           git commit -m "Update or add specific file"
-          git push
+          git push https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/MohammedAltarkawi/test-actions.git
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}

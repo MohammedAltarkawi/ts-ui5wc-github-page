@@ -12,27 +12,48 @@ jobs:
     env:
       ACTIONS_STEP_DEBUG: true
     steps:
-      - name: checkout
+      # Step 1: Checkout the source repository
+      - name: Checkout source repo
         uses: actions/checkout@v3
-      - name: setup pnpm
+
+      # Step 2: Setup pnpm and Node.js
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.0.2
-      - name: build
+
+      # Step 3: Build the project
+      - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
         env:
           CI: true
 
-      - name: build self
+      - name: Build the project
         run: npm run build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          external_repository: MohammedAltarkawi/mohammedaltarkawi.github.io
-          publish_branch: main # default: gh-pages
-          publish_dir: ./dist
+      # Step 4: Clone the target repository
+      - name: Clone target repo
+        run: |
+          git clone https://github.com/MohammedAltarkawi/test-actions.git target-repo
+          cd target-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Step 5: Copy the specific file to the target repository (create or replace)
+      - name: Copy specific file
+        run: |
+          cp ./dist/index.html target-repo/path2/to/index.html
+
+      # Step 6: Commit and push the changes
+      - name: Commit and push changes
+        run: |
+          cd target-repo
+          git add path/to/specific-file.html
+          git commit -m "Update or add specific file"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
